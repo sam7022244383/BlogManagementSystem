@@ -12,7 +12,7 @@ namespace Application.Interface
 
         Task<T> GetByIdAsync(int id);
 
-        Task<T> GetAsync(T entity);
+        Task<T> AddAsync(T entity);
 
         Task UpdateAsync(T entity);
 
