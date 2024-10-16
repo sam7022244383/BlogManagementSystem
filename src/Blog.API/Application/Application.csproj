@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Author\" />
-    <Folder Include="Features\Blog\Commands\" />
-    <Folder Include="Features\Blog\Queries\" />
+    <Folder Include="Features\Author\Command\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-
+using Application.Extensions;
+using Infrastructure.Extensions;
 namespace WebAPI
 {
     public class Program
@@ -13,7 +14,11 @@ namespace WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            //Infra layer
+            builder.Services.AddInfrastructureServices(builder.Configuration);
 
+            //applicaton layer
+            builder.Services.AddApplicationServices();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -27,7 +32,7 @@ namespace WebAPI
 
 
             app.MapControllers();
-
+            app.CreatedbIfNotExists();
             app.Run();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Application.Interface;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +17,11 @@ namespace Infrastructure.Extensions
             ,IConfiguration configuration)
         {
             services.AddDbContext<AppContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString(""),
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"),
              o => o.EnableRetryOnFailure()));
 
-            services.AddScoped(typeof(IRepository<>), typeof(IRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IAuthorRepository , AuthorRepository>();
             return services;
         }
     }

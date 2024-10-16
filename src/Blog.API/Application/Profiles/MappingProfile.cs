@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Features;
+using AutoMapper;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,8 @@ namespace Application.Profiles
     {
         public MappingProfile() 
         { 
-        
+            CreateMap<Blog,BlogDto>().ReverseMap();
+            CreateMap<Author,AuthorDto>().ReverseMap();
         
         }
     }

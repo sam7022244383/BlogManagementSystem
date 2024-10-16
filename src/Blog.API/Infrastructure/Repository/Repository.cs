@@ -10,7 +10,7 @@ namespace Infrastructure.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly AppContext _appcontext;
+        internal readonly AppContext _appcontext;
         public Repository(AppContext appContext) 
         {
             _appcontext = appContext;
