@@ -16,6 +16,7 @@ namespace Application.Response
 
         public string Message { get; set; }
 
+        public int StatusCode { get; set; }
         public List<string> ValidationErrors { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Application.Interface;
 using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,14 @@ namespace Application.Features.Author.Query.GetAuthorByName
 {
     public class GetAuthorsByNameQueryHandler : IRequestHandler<GetAuthorByNameQuery, GetAuthorByNameRespoance>
     {
-        private readonly IAuthorRepository _AuthorRepository;
+        
+        private readonly IAuthorService _AuthorService;
         private readonly IMapper mapper;
         private readonly ILogger logger;
-        public GetAuthorsByNameQueryHandler(IAuthorRepository authorRepository,
+        public GetAuthorsByNameQueryHandler(IAuthorService authorService,
             IMapper mapper, ILogger<GetAuthorsByNameQueryHandler> logger)
         {
-            _AuthorRepository = authorRepository;
+            _AuthorService = authorService;
             this.mapper = mapper;
             this.logger = logger;
         }
@@ -45,7 +47,7 @@ namespace Application.Features.Author.Query.GetAuthorByName
                 }
                 else
                 {
-                    var result = await _AuthorRepository.GetNyNameAsync(request.Name);
+                    var result = await _AuthorService.GetAuthorByName(request.Name);
                     getByNameAuthorRespoance.author = this.mapper.Map<List<AuthorDto>>(result);
 
                 }

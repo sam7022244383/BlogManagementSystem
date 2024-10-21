@@ -1,5 +1,7 @@
 using Application.Extensions;
 using Infrastructure.Extensions;
+using Microsoft.Extensions.Azure;
+
 namespace WebAPI
 {
     public class Program
@@ -16,7 +18,10 @@ namespace WebAPI
             builder.Services.AddSwaggerGen();
             //Infra layer
             builder.Services.AddInfrastructureServices(builder.Configuration);
-
+            builder.Services.AddAzureClients(Clientbuilder =>
+            {
+                Clientbuilder.AddQueueServiceClient(builder.Configuration["AzureMessageKey:QueueKey"]);  
+            });
             //applicaton layer
             builder.Services.AddApplicationServices();
             var app = builder.Build();

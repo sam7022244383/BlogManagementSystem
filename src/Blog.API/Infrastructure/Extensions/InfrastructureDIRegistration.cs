@@ -3,6 +3,8 @@ using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,10 @@ namespace Infrastructure.Extensions
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IAuthorRepository , AuthorRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IAzureMessage, AzureMessage>();
+            services.AddScoped(typeof(IAzureQueueService<>), typeof(AzureQueueService<>));
             return services;
         }
     }

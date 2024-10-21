@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Services
+namespace Application.Features
 {
-    public class AzureServicesBusService
+    public class BaseName
     {
+        public string Name { get; set; }
     }
 }
