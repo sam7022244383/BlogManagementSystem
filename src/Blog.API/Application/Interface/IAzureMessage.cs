@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure.Storage.Queues;
 using Azure;
+using Application.Features.ViewModel;
 
 namespace Application.Interface
 {
@@ -14,5 +15,9 @@ namespace Application.Interface
         Task<Response<SendReceipt>> SendMessageAsync(string message);
 
         Task<Response<SendReceipt>> SendMessageObjectAsync<T>(T mesaage);
+
+        Task<List<AzureQueueMessageRespoance>> GetQueueMessages(int count);
+
+        Task<List<AzureQueueMessageRespoance>> DeleteQueueMessages(int count);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Features;
+using Application.Response;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -15,6 +16,7 @@ namespace Application.Profiles
         { 
             CreateMap<Blog,BlogDto>().ReverseMap();
             CreateMap<Author,AuthorDto>().ReverseMap();
+            CreateMap<Employe , EmployeRespoance>().ReverseMap();
         
         }
     }

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Author\Command\" />
-    <Folder Include="AzureMessageQueue\Query\" />
   </ItemGroup>
 
   <ItemGroup>

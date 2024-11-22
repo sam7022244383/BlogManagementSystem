@@ -1,4 +1,5 @@
-﻿using Application.Interface;
+﻿using Application.Features.ViewModel;
+using Application.Interface;
 using Azure;
 using Azure.Storage.Queues.Models;
 using Services.Interfaces;
@@ -19,6 +20,20 @@ namespace Services
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<List<AzureQueueMessageRespoance>> DeleteQueueMessages(int count)
+        {
+            var result = await _unitOfWork.azureMessageQueueRepository.DeleteQueueMessages(count);
+            await _unitOfWork.CommitAsync();
+            return result;
+        }
+
+        public async Task<List<AzureQueueMessageRespoance>> GetAllQueueMessages(int count)
+        {
+           var result = await _unitOfWork.azureMessageQueueRepository.GetQueueMessages(count);
+            await _unitOfWork.CommitAsync();
+            return result;
+        }
+
         public async Task<Response<SendReceipt>> SendeMessageJsonBody(T message)
         {
            var result = await _unitOfWork.azureMessageQueueRepository
@@ -35,5 +50,7 @@ namespace Services
 
     
         }
+
+
     }
 }

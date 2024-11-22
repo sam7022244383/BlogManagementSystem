@@ -28,6 +28,7 @@ namespace Infrastructure.Extensions
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IAzureMessage, AzureMessage>();
             services.AddScoped(typeof(IAzureQueueService<>), typeof(AzureQueueService<>));
+            services.AddScoped(typeof(IAzureRepository<>), typeof(AzureRepository<>));
             return services;
         }
     }
